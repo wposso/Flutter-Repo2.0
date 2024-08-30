@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
   class datosUsuarios{
     String nombre;
     String apellido;
+    String? telefono;
+    String? direccion;
 
     datosUsuarios({
       required this.nombre, 
@@ -25,6 +27,8 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
   final List<datosUsuarios> listadoUsuarios = [];
   final TextEditingController nombreControl = TextEditingController();
   final TextEditingController apellidoControl = TextEditingController();
+  final TextEditingController telefonoControl = TextEditingController();
+  final TextEditingController direccionControl = TextEditingController();
   int? index;
   String message = '';
 
@@ -36,6 +40,8 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
     });
     nombreControl.clear();
     apellidoControl.clear();
+    telefonoControl.clear();
+    direccionControl.clear();
   }
 
   void actualizarUsuarios(int index){
@@ -46,6 +52,8 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
     });
     nombreControl.clear();
     apellidoControl.clear();
+    telefonoControl.clear();
+    direccionControl.clear();
   }
 
   void eliminarUsuarios(int index){
@@ -103,6 +111,28 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
               ),
             ),
 
+            const SizedBox(height: 10,),
+            TextFormField(
+              controller: telefonoControl,
+              decoration: const InputDecoration(
+                hintText: 'Telefono',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))
+                )
+              ),
+            ),
+
+            const SizedBox(height: 10,),
+            TextFormField(
+              controller: direccionControl,
+              decoration: const InputDecoration(
+                hintText: 'Dirección',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))
+                )
+              ),
+            ),
+
             const SizedBox(height: 50,),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -135,6 +165,8 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
                     listadoUsuarios: listadoUsuarios,
                     apellidoControl: apellidoControl,
                     nombreControl: nombreControl,
+                    telefonoControl: telefonoControl,
+                    direccionControl: direccionControl,
                     actualizarUsuarios: actualizarUsuarios,
                     eliminarUsuarios: eliminarUsuarios)));
                 }, 

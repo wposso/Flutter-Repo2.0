@@ -7,6 +7,8 @@ class ListadoUsuariosScreen extends StatefulWidget {
   final List<datosUsuarios> listadoUsuarios;
   final nombreControl;
   final apellidoControl;
+  final telefonoControl;
+  final direccionControl;
   final Function(int) actualizarUsuarios;
   final Function(int) eliminarUsuarios;
    
@@ -16,7 +18,9 @@ class ListadoUsuariosScreen extends StatefulWidget {
     this.nombreControl, 
     this.apellidoControl, 
     required this.actualizarUsuarios, 
-    required this.eliminarUsuarios});
+    required this.eliminarUsuarios, 
+    this.telefonoControl, 
+    this.direccionControl});
 
   @override
   State<ListadoUsuariosScreen> createState() => _ListadoUsuariosScreenState();
