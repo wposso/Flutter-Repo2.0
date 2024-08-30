@@ -26,6 +26,7 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
   final TextEditingController nombreControl = TextEditingController();
   final TextEditingController apellidoControl = TextEditingController();
   int? index;
+  String message = '';
 
   void crearUsuarios(){
     setState(() {
@@ -51,6 +52,17 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
     setState(() {
       listadoUsuarios.removeAt(index);
     });
+  }
+
+  void loginMethod(){
+    for(var usuario in listadoUsuarios){
+      if(usuario.nombre == nombreControl.text && usuario.apellido == apellidoControl.text){
+        Navigator.pop(context);
+      }
+      else{
+        message = 'Credenciales inconrrectas';
+      }
+    }
   }
 
   @override
