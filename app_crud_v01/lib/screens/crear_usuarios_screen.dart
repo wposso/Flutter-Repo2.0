@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
   class datosUsuarios{
     String nombre;
     String apellido;
-    String? telefono;
-    String? direccion;
+    String telefono;
+    String direccion;
 
     datosUsuarios({
       required this.nombre, 
-      required this.apellido});
+      required this.apellido,
+      required this.telefono,
+      required this.direccion});
   }
 
 class CrearUsuariosScreen extends StatefulWidget {
@@ -36,7 +38,9 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
     setState(() {
       listadoUsuarios.add(datosUsuarios(
         nombre: nombreControl.text, 
-        apellido: apellidoControl.text));
+        apellido: apellidoControl.text,
+        telefono: telefonoControl.text,
+        direccion: direccionControl.text));
     });
     nombreControl.clear();
     apellidoControl.clear();
@@ -48,7 +52,9 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
     setState(() {
       listadoUsuarios[index] = datosUsuarios(
         nombre: nombreControl.text, 
-        apellido: apellidoControl.text);
+        apellido: apellidoControl.text,
+        telefono: telefonoControl.text,
+        direccion: direccionControl.text);
     });
     nombreControl.clear();
     apellidoControl.clear();
@@ -93,6 +99,7 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
             TextFormField(
               controller: nombreControl,
               decoration: const InputDecoration(
+                label: Text('Nombre'),
                 hintText: 'Nombre',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15))
@@ -100,10 +107,11 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
               ),
             ),
 
-            const SizedBox(height: 10,),
+            const SizedBox(height: 18,),
             TextFormField(
               controller: apellidoControl,
               decoration: const InputDecoration(
+                label: Text('Apellido'),
                 hintText: 'Apellido',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15))
@@ -111,10 +119,11 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
               ),
             ),
 
-            const SizedBox(height: 10,),
+            const SizedBox(height: 18,),
             TextFormField(
               controller: telefonoControl,
               decoration: const InputDecoration(
+                label: Text('Telefono'),
                 hintText: 'Telefono',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15))
@@ -122,10 +131,11 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
               ),
             ),
 
-            const SizedBox(height: 10,),
+            const SizedBox(height: 18,),
             TextFormField(
               controller: direccionControl,
               decoration: const InputDecoration(
+                label: Text('Dirección'),
                 hintText: 'Dirección',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15))

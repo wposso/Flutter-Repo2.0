@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
+
 import 'package:app_crud_v01/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -49,14 +50,14 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
             return Column(
                       children: [
                         Container(
-                          height: 50,
+                          height: 60,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 233, 231, 225),
                             borderRadius: BorderRadius.all(Radius.circular(15))
                           ),
                           child: ListTile(
-                            title: Text('${datos.nombre} ${datos.apellido}'),
+                            title: Text('${datos.nombre} ${datos.apellido} \n ${datos.telefono} ${datos.direccion}'),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -65,6 +66,8 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
                                   onPressed: (){
                                     widget.nombreControl.text = widget.listadoUsuarios[index].nombre;
                                     widget.apellidoControl.text = widget.listadoUsuarios[index].apellido;
+                                    widget.telefonoControl.text = widget.listadoUsuarios[index].telefono;
+                                    widget.direccionControl.text = widget.listadoUsuarios[index].direccion;
 
                                     showDialog(
                                       context: context, 
@@ -72,14 +75,16 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
                                         return AlertDialog(
                                           title: const Text('Editar usuario'),
                                           content: Column(
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
 
                                               const Text('Aquí podrás editar la información de los usuarios.'),
-                                              const SizedBox(height: 20,),
+                                              const SizedBox(height: 40,),
 
                                               TextFormField(
                                                 controller: widget.nombreControl,
                                                 decoration: const InputDecoration(
+                                                  label: Text('Nombre'),
                                                   hintText: 'Editar nombre',
                                                   border: OutlineInputBorder(
                                                     borderRadius: BorderRadius.all(Radius.circular(15))
@@ -87,11 +92,36 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
                                                 ),
                                               ),
 
-                                              const SizedBox(height: 10,),
+                                              const SizedBox(height: 18,),
                                               TextFormField(
                                                 controller: widget.apellidoControl,
                                                 decoration: const InputDecoration(
+                                                  label: Text('Apellido'),
                                                   hintText: 'Editar apellido',
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                                  )
+                                                ),
+                                              ),
+
+                                              const SizedBox(height: 18,),
+                                              TextFormField(
+                                                controller: widget.telefonoControl,
+                                                decoration: const InputDecoration(
+                                                  label: Text('Telefono'),
+                                                  hintText: 'Editar telefono',
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                                  )
+                                                ),
+                                              ),
+
+                                              const SizedBox(height: 18,),
+                                              TextFormField(
+                                                controller: widget.direccionControl,
+                                                decoration: const InputDecoration(
+                                                  label: Text('Dirección'),
+                                                  hintText: 'Editar dirección',
                                                   border: OutlineInputBorder(
                                                     borderRadius: BorderRadius.all(Radius.circular(15))
                                                   )
@@ -127,7 +157,7 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
                                   }, 
                                   icon: const Icon(Icons.edit)),
 
-                                const SizedBox(width: 20,),
+                                const SizedBox(width: 10,),
                                 IconButton(
                                   onPressed: (){
                                     showDialog(
