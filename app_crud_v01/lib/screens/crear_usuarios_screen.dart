@@ -1,6 +1,7 @@
 
 // ignore_for_file: avoid_unnecessary_containers, camel_case_types, sized_box_for_whitespace
 
+import 'package:app_crud_v01/screens/inicio_sesion_screen.dart';
 import 'package:app_crud_v01/screens/listado_usuarios_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -69,14 +70,17 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
   }
 
   void loginMethod(){
-    for(var usuario in listadoUsuarios){
+    setState(() {
+      for(var usuario in listadoUsuarios){
       if(usuario.nombre == nombreControl.text && usuario.apellido == apellidoControl.text){
-        Navigator.pop(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ListadoUsuariosScreen(listadoUsuarios: listadoUsuarios, actualizarUsuarios: actualizarUsuarios, eliminarUsuarios: eliminarUsuarios),));
       }
       else{
-        message = 'Credenciales inconrrectas';
+        print('Error');
       }
     }
+    });
+    
   }
 
   @override
@@ -180,7 +184,17 @@ class _CrearUsuariosScreenState extends State<CrearUsuariosScreen> {
                     actualizarUsuarios: actualizarUsuarios,
                     eliminarUsuarios: eliminarUsuarios)));
                 }, 
-                icon: const Icon(Icons.list_alt, color: Colors.white, size: 30,))
+                icon: const Icon(Icons.list_alt, color: Colors.white, size: 30,)),
+
+              const SizedBox(width: 40,),
+              IconButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InicioSesionScreen(
+                    loginMethod: loginMethod,
+                    nombreControl: nombreControl,
+                    apellidoControl: apellidoControl,),));
+                }, 
+                icon: const Icon(Icons.login, color: Colors.white, size: 30,))
             ],
           ),
         ),

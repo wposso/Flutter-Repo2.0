@@ -50,14 +50,14 @@ class _ListadoUsuariosScreenState extends State<ListadoUsuariosScreen> {
             return Column(
                       children: [
                         Container(
-                          height: 60,
+                          height: 80,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 233, 231, 225),
                             borderRadius: BorderRadius.all(Radius.circular(15))
                           ),
                           child: ListTile(
-                            title: Text('${datos.nombre} ${datos.apellido} \n ${datos.telefono} ${datos.direccion}'),
+                            title: Text('${datos.nombre} ${datos.apellido} \n ${datos.telefono} \n ${datos.direccion}'),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [

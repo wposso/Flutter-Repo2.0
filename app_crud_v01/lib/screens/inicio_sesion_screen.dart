@@ -1,9 +1,19 @@
 
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
 class InicioSesionScreen extends StatefulWidget {
+
+  final VoidCallback loginMethod;
+  final nombreControl;
+  final apellidoControl;
    
-  const InicioSesionScreen({super.key});
+  const InicioSesionScreen({
+    super.key, 
+    required this.loginMethod, 
+    this.nombreControl, 
+    this.apellidoControl});
 
   @override
   State<InicioSesionScreen> createState() => _InicioSesionScreenState();
@@ -21,13 +31,15 @@ class _InicioSesionScreenState extends State<InicioSesionScreen> {
         title: const Text('Iniciar sesión'),
         centerTitle: true,
       ),
-      body: const Padding(padding: EdgeInsets.all(25),
+      body: Padding(padding: const EdgeInsets.all(25),
       child: Column(
         children: [
 
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           TextField(
-            decoration: InputDecoration(
+            controller: widget.nombreControl,
+            decoration: const InputDecoration(
+              label: Text('Nombre'),
               hintText: 'Nombre',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15))
@@ -35,40 +47,24 @@ class _InicioSesionScreenState extends State<InicioSesionScreen> {
             ),
           ),
 
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           TextField(
-            decoration: InputDecoration(
+            controller: widget.apellidoControl,
+            decoration: const InputDecoration(
+              label: Text('Apellido'),
               hintText: 'Apellido',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15))
               )
             ),
           ),
-
-          SizedBox(height: 20,),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Telefono',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15))
-              )
-            ),
-          ),
-
-          SizedBox(height: 20,),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Dirección',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15))
-              )
-            ),
-          ),
-
-          SizedBox(height: 50,),
+          
+          const SizedBox(height: 50,),
           ElevatedButton(
             // style: ElevatedButton.styleFrom(),
-            onPressed: null, 
+            onPressed: (){
+              widget.loginMethod;
+            }, 
             child: Text('Registrar'))
         ],
       ),)
